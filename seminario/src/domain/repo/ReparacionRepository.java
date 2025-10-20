@@ -10,5 +10,5 @@ public interface ReparacionRepository {
     List<Reparacion> findAll();
     boolean deleteById(Long id);
     List<Reparacion> findByEquipo(Long equipoId);
-    List<Reparacion> findAbiertas();
+    List<Reparacion> findAbiertas();   // <- ESTE método debe existir
 }
