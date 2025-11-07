@@ -16,7 +16,7 @@ rem Lista absoluta de TODOS los .java bajo src
 dir /s /b src\*.java > sources.txt
 
 echo Compilando clases...
-javac -d bin -cp "lib/*" @sources.txt
+javac -encoding UTF-8 -d bin -cp "lib/*" @sources.txt
 
 if errorlevel 1 (
     echo.
@@ -28,7 +28,7 @@ if errorlevel 1 (
 
 echo.
 echo Ejecutando aplicacion...
-java -cp "bin;lib/*" app.Main
+java -Dfile.encoding=UTF-8 -cp "bin;lib/*" app.Main
 
 echo.
 echo Presiona una tecla para salir...

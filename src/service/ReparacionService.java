@@ -19,7 +19,7 @@ public class ReparacionService {
         var eq = eqRepo.findById(r.getEquipoId())
                 .orElseThrow(() -> new IllegalArgumentException("Equipo inexistente"));
         if (eq.getEstado()==EstadoEquipo.BAJA)
-            throw new IllegalStateException("No se puede abrir reparación de un equipo en BAJA");
+            throw new IllegalStateException("No se puede abrir reparaciOn de un equipo en BAJA");
         r.setEstado(EstadoReparacion.ABIERTA);
         r.setFechaApertura(LocalDateTime.now());
         var saved = repRepo.save(r);
@@ -31,9 +31,9 @@ public class ReparacionService {
 
     public Reparacion cerrar(Long reparacionId, String descripcionCierre){
         var rep = repRepo.findById(reparacionId)
-                .orElseThrow(() -> new IllegalArgumentException("Reparación inexistente"));
+                .orElseThrow(() -> new IllegalArgumentException("ReparaciOn inexistente"));
         if (rep.getEstado()==EstadoReparacion.CERRADA)
-            throw new IllegalStateException("La reparación ya está cerrada");
+            throw new IllegalStateException("La reparaciOn ya estA cerrada");
         rep.setDescripcion(descripcionCierre); // si querés guardar resultado aquí
         rep.setEstado(EstadoReparacion.CERRADA);
         rep.setFechaCierre(LocalDateTime.now());

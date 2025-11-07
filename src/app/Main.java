@@ -89,7 +89,7 @@ var audit  = new service.AuditService();
             var tabs = new JTabbedPane();
             tabs.addTab("Equipos", panelEquipos);
             tabs.addTab("Reparaciones", panelRep);
-            tabs.addTab("Auditoría", panelAudit);
+            tabs.addTab("AuditorIa", panelAudit);
 
             frame.setContentPane(tabs);
             frame.setSize(1150, 760);

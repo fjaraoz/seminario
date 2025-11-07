@@ -7,10 +7,12 @@ import java.sql.SQLException;
 public class MySqlConnectionProvider {
 
     private static final String URL =
-            "jdbc:mysql://localhost:3306/inventario_it" +
-            "?useSSL=false" +
-            "&allowPublicKeyRetrieval=true" +
-            "&serverTimezone=America/Argentina/Buenos_Aires";
+    "jdbc:mysql://localhost:3306/inventario_it"
+        + "?useSSL=false"
+        + "&allowPublicKeyRetrieval=true"
+        + "&serverTimezone=America/Argentina/Buenos_Aires"
+        + "&useUnicode=true"
+        + "&characterEncoding=UTF-8";
 
     private static final String USER = "root";        // o el usuario que uses en Workbench
     private static final String PASSWORD = "Nameless_77";  // contraseña real

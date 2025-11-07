@@ -45,9 +45,9 @@ public class ReparacionController {
                 var saved = repSrv.abrir(r);
                 tm.setData(repSrv.listar());
                 audit.log(new AuditEntry(Session.operador(),
-                        "Abrir Reparación","ID="+saved.getId()+" Equipo="+saved.getEquipoId()));
+                        "Abrir Reparacion","ID="+saved.getId()+" Equipo="+saved.getEquipoId()));
                 form.clear();
-                JOptionPane.showMessageDialog(form,"Reparación abierta","Info",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(form,"Reparacion abierta","Info",JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception ex){
                 JOptionPane.showMessageDialog(form, ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
             }
@@ -59,7 +59,7 @@ public class ReparacionController {
                 var saved = repSrv.cerrar(id, "Cierre por: "+Session.operador());
                 tm.setData(repSrv.listar());
                 audit.log(new AuditEntry(Session.operador(),
-                        "Cerrar Reparación","ID="+saved.getId()));
+                        "Cerrar Reparacion","ID="+saved.getId()));
             } catch (Exception ex){
                 JOptionPane.showMessageDialog(form, ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
             }

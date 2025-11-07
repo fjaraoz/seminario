@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReparacionTableModel extends AbstractTableModel {
-    private final String[] cols = {"ID","EquipoId","Estado","F. Apertura","F. Cierre","Descripción","Técnico"};
+    private final String[] cols = {"ID","EquipoId","Estado","F. Apertura","F. Cierre","DescripciOn","TEcnico"};
     private final DateTimeFormatter FMT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private List<Reparacion> data = new ArrayList<>();
 

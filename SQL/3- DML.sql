@@ -5,8 +5,8 @@ ON DUPLICATE KEY UPDATE nombre=VALUES(nombre);
 
 -- 3.2) Usuarios
 INSERT INTO Usuario (username, nombre, email, activo) VALUES
-  ('tecnico1','Técnico Soporte','tecnico1@org.local', TRUE),
-  ('admin1','Jefa de Área','admin1@org.local', TRUE)
+  ('tecnico1','Tecnico Soporte','tecnico1@org.local', TRUE),
+  ('admin1','Jefa de Area','admin1@org.local', TRUE)
 ON DUPLICATE KEY UPDATE nombre=VALUES(nombre), activo=VALUES(activo);
 
 -- 3.3) Asignar roles
@@ -21,7 +21,7 @@ ON DUPLICATE KEY UPDATE idRol=VALUES(idRol);
 INSERT INTO Dependencia (nombre, sigla, ubicacion, estado) VALUES
 	('Mesa de Entradas','ME','PB', 'Activa'),
 	('Recursos Humanos','RRHH','1er piso', 'Activa'),
-	('Informática','INF','Subsuelo', 'Activa'),
+	('Informatica','INF','Subsuelo', 'Activa'),
 	('Contabilidad','CONT','2do piso', 'Activa'),
     ('Finanzas','FIN','3er piso', 'Activa'),
     ('Cocina','COC','Subsuelo', 'Activa'),
@@ -64,21 +64,21 @@ INSERT INTO Equipo (idDependencia, tipo, marca, modelo, nroSerie, estado, observ
 -- Informática (6 PCs, 3 impresoras)
 ((SELECT idDependencia FROM Dependencia WHERE nombre='Informática'),
  'PC','Dell','OptiPlex 5080','INF-PC-001','Operativo','INF-INV-001'),
-((SELECT idDependencia FROM Dependencia WHERE nombre='Informática'),
+((SELECT idDependencia FROM Dependencia WHERE nombre='Informatica'),
  'PC','Dell','OptiPlex 5080','INF-PC-002','Operativo','INF-INV-002'),
-((SELECT idDependencia FROM Dependencia WHERE nombre='Informática'),
+((SELECT idDependencia FROM Dependencia WHERE nombre='Informatica'),
  'PC','Dell','OptiPlex 5080','INF-PC-003','Operativo','INF-INV-003'),
-((SELECT idDependencia FROM Dependencia WHERE nombre='Informática'),
+((SELECT idDependencia FROM Dependencia WHERE nombre='Informatica'),
  'PC','HP','Z2 G5','INF-PC-004','Operativo','INF-INV-004'),
-((SELECT idDependencia FROM Dependencia WHERE nombre='Informática'),
+((SELECT idDependencia FROM Dependencia WHERE nombre='Informatica'),
  'PC','Lenovo','ThinkStation P340','INF-PC-005','Operativo','INF-INV-005'),
-((SELECT idDependencia FROM Dependencia WHERE nombre='Informática'),
+((SELECT idDependencia FROM Dependencia WHERE nombre='Informatica'),
  'PC','Lenovo','ThinkStation P340','INF-PC-006','Operativo','INF-INV-006'),
-((SELECT idDependencia FROM Dependencia WHERE nombre='Informática'),
+((SELECT idDependencia FROM Dependencia WHERE nombre='Informatica'),
  'Impresora','HP','LaserJet Pro M404','INF-IMP-001','Operativo','INF-INV-101'),
-((SELECT idDependencia FROM Dependencia WHERE nombre='Informática'),
+((SELECT idDependencia FROM Dependencia WHERE nombre='Informatica'),
  'Impresora','Brother','DCP-L2550DW','INF-IMP-002','Operativo','INF-INV-102'),
-((SELECT idDependencia FROM Dependencia WHERE nombre='Informática'),
+((SELECT idDependencia FROM Dependencia WHERE nombre='Informatica'),
  'Impresora','Epson','L4260','INF-IMP-003','Operativo','INF-INV-103'),
 
 -- Contabilidad (5 PCs, 2 impresoras)
@@ -140,19 +140,3 @@ INSERT INTO Equipo (idDependencia, tipo, marca, modelo, nroSerie, estado, observ
  'PC','HP','EliteDesk 800','DIR-PC-003','Operativo','DIR-INV-003'),
 ((SELECT idDependencia FROM Dependencia WHERE nombre='Direccion'),
  'Impresora','HP','LaserJet Pro M404','DIR-IMP-001','Operativo','DIR-INV-101');
-
-
--- 3.6) Reparaciones (una abierta y una finalizada)
-INSERT INTO Reparacion (idEquipo, idTecnico, fechaApertura, descripcionFalla, estado, fechaCierre, observaciones)
-VALUES
- ((SELECT idEquipo FROM Equipo WHERE nroSerie='SN-IMP-010'),
-  (SELECT idUsuario FROM Usuario WHERE username='tecnico1'),
-  DATE_SUB(CURDATE(), INTERVAL 7 DAY),
-  'Atasco de papel recurrente',
-  'EnCurso', NULL, 'Se limpió rodillo; revisar engranajes'),
-
- ((SELECT idEquipo FROM Equipo WHERE nroSerie='SN-PC-001'),
-  (SELECT idUsuario FROM Usuario WHERE username='tecnico1'),
-  DATE_SUB(CURDATE(), INTERVAL 20 DAY),
-  'No enciende',
-  'Finalizada', DATE_SUB(CURDATE(), INTERVAL 15 DAY), 'Cambio de fuente');

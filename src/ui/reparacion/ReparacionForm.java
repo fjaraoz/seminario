@@ -14,8 +14,8 @@ public class ReparacionForm extends JPanel {
     private final JTextArea txtDescripcion = new JTextArea(3, 30);
     private final JTextField txtTecnico = new JTextField(18);
 
-    private final JButton btnAbrir = new JButton("Abrir reparación");
-    private final JButton btnCerrar = new JButton("Cerrar reparación");
+    private final JButton btnAbrir = new JButton("Abrir reparacion");
+    private final JButton btnCerrar = new JButton("Cerrar reparacion");
     private final JButton btnRefrescar = new JButton("Refrescar");
     private final JButton btnExportar = new JButton("Exportar CSV");
 
@@ -30,11 +30,11 @@ public class ReparacionForm extends JPanel {
         txtDescripcion.setLineWrap(true);
         txtDescripcion.setWrapStyleWord(true);
 
-        p.add(new JLabel("Equipo (Código – Nº Serie):"));
+        p.add(new JLabel("Equipo (Codigo – Nº Serie):"));
         p.add(cbEquipo);
-        p.add(new JLabel("Descripción:"));
+        p.add(new JLabel("Descripcion:"));
         p.add(new JScrollPane(txtDescripcion));
-        p.add(new JLabel("Técnico responsable:"));
+        p.add(new JLabel("Tecnico responsable:"));
         p.add(txtTecnico);
 
         JPanel botones = new JPanel(new FlowLayout(FlowLayout.RIGHT));
@@ -59,7 +59,7 @@ public class ReparacionForm extends JPanel {
 
         btnCerrar.addActionListener(e -> {
             if (onCerrar!=null) {
-                String id = JOptionPane.showInputDialog(this,"ID de reparación a cerrar:");
+                String id = JOptionPane.showInputDialog(this,"ID de reparacion a cerrar:");
                 if (id!=null && !id.isBlank()) onCerrar.accept(Long.parseLong(id));
             }
         });
